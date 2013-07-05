@@ -1,27 +1,37 @@
 package com.ryarc.mobile.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import com.ryarc.mobile.Actions;
 import com.ryarc.mobile.R;
 import com.ryarc.mobile.Settings;
 
-public class WebApp extends Activity {
-
-    private static final int MENU_SETTINGS = Menu.FIRST;
+public class WebApp extends BaseActivity {
 
     private WebView browser;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        super.onCreateOptionsMenu(menu);
-        menu.add(0, WebApp.MENU_SETTINGS, 0,
-                R.string.action_settings).setIcon(
-                android.R.drawable.ic_menu_more);
+        getMenuInflater().inflate(R.menu.web_app, menu);
         return true;
+    }
+
+    @Override
+    public boolean onMenuItemSelected(int featureId, MenuItem item) {
+        Intent intent = null;
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+                intent = new Intent(Actions.CHANGE_SETTINGS);
+                startActivity(intent);
+                return true;
+        }
+        return super.onMenuItemSelected(featureId, item);
     }
 
     @Override
@@ -32,11 +42,10 @@ public class WebApp extends Activity {
     }
 
     private void init() {
-        Settings.Load();
         browser = (WebView)findViewById(R.id.browser);
         browser.getSettings().setJavaScriptEnabled(true);
         browser.setWebViewClient(new AppWebViewClient());
-        browser.loadUrl(Settings.getAppURL());
+        browser.loadUrl(getSettings().getAppURL());
     }
 
     private class AppWebViewClient extends WebViewClient {

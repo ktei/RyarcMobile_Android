@@ -3,5 +3,10 @@
 
     <string name="app_name">Ryarc Mobile</string>
     <string name="action_settings">Settings</string>
-
+    <string name="change_app_url_label">Type a valid URL for RyarcMobile server:</string>
+    <string name="dlg_close">Close</string>
+    <string name="dlg_general_error_title">Oops, we got a problem</string>
+    <string name="dlg_invalid_app_url">The URL is not valid. Please type a URL of correct format.</string>
+    <string name="btn_save_changes">Save changes</string>
+    <string name="btn_cancel">Cancel</string>
 </resources>

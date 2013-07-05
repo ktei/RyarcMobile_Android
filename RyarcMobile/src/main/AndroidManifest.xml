@@ -20,13 +20,17 @@
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
-            android:name="com.ryarc.mobile.ChangeSettings"
-            android:label="@string/title_activity_change_settings" >
+                android:name="com.ryarc.mobile.activities.ChangeSettings"
+                android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="com.ryarc.mobile.action.CHANGE_SETTINGS" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
     </application>
 
